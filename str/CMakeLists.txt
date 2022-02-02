@@ -58,7 +58,7 @@ target_sources(str PUBLIC
 	"$<INSTALL_INTERFACE:${HEADERS}>"
 )
 
-target_link_libraries(str PUBLIC shared TermAPI strlib optlib)
+target_link_libraries(str PUBLIC shared TermAPI strlib optlib filelib)
 
 install(
 	TARGETS str
