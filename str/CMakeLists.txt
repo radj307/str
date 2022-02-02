@@ -13,7 +13,7 @@ CREATE_FILE("${CMAKE_CURRENT_SOURCE_DIR}/version.h"
 	"#define STR_VERSION_MINOR ${STR_VERSION_MINOR}\\n"
 	"#define STR_VERSION_PATCH ${STR_VERSION_PATCH}\\n"
 )
-CREATE_VERSION_HEADER_2("${CMAKE_CURRENT_SOURCE_DIR}/version.h")
+CREATE_VERSION_HEADER_2("${CMAKE_CURRENT_SOURCE_DIR}/version.h" "STR" "${STR_VERSION_MAJOR}" "${STR_VERSION_MINOR}" "${STR_VERSION_PATCH}" "${STR_VERSION_EXTRA}")
 
 if (WIN32)
 	set(STR_RESOURCE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/str.rc")
@@ -58,4 +58,10 @@ target_sources(str PUBLIC
 	"$<INSTALL_INTERFACE:${HEADERS}>"
 )
 
-target_link_libraries(str PUBLIC strlib optlib TermAPI)
+target_link_libraries(str PUBLIC shared TermAPI strlib optlib)
+
+install(
+	TARGETS str
+	RUNTIME
+	DESTINATION "${CMAKE_INSTALL_PREFIX}/bin"
+)
