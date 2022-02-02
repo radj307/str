@@ -364,3 +364,5 @@ obj/
 #Nuget packages folder
 packages/
 out/
+/str/str.rc
+/str/version.h
